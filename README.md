@@ -3,8 +3,11 @@
 ... with Stochastic Gradient Descent.
 ... with image related stuff!
 
+Essentially take an encoded x/y coordinate, and train the neural network on an image to learn what the color should be at that point!
+
 Neural network stuff: `src/nn`  
-Using it to draw images: `src/image`
+Using it to draw images: `src/image`  
+Based on https://github.com/tablekat/simple-neural-network
 
 Success threshold and the learning rate (eta) are defined in `src/mnist/index.ts`, play with those if you want.
 
