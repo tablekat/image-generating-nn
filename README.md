@@ -39,3 +39,6 @@ Success threshold and the learning rate (eta) are defined in `src/mnist/index.ts
 
 Same as above but with 40 epochs:
 ![](http://i.imgur.com/0mmMwSO.jpg)
+
+Same as above but with different start image:
+![](http://i.imgur.com/lxpAGUo.png)
