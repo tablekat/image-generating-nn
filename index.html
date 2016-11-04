@@ -1,0 +1,36 @@
+<html>
+<head>
+  <title>...</title>
+
+  <style>
+    .main {
+      text-align: center;
+    }
+    canvas {
+      border: 1px solid black;
+      padding: 5px;
+      margin: 10px;
+    }
+  </style>
+  <script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+  <div class="main">
+    <button onclick="startNN()">Start NN</button><br/>
+    <canvas id="outCanvas"></canvas>
+    <br/>
+    <canvas id="fromCanvas"></canvas>
+    <hr/>
+    <div id="epochCanvases">
+
+    </div>
+  </div>
+
+  <script src="build/app.js"></script>
+</body>
+</html>

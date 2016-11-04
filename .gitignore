@@ -1,0 +1,3 @@
+node_modules
+data/mnistout_full.csv
+data/train-images.idx3-ubyte
