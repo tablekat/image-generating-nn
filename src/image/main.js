@@ -34,7 +34,7 @@ function main(){
 window.startNN = function(){
   main().then(() => {
 
-    $("#epochCanvases").text();
+    $("#epochCanvases").text("");
 
     console.log("Preparing neural network...");
     var { nn, trainingData, testData } = prepareNN(World);
