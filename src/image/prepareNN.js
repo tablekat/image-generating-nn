@@ -7,11 +7,11 @@ export const BIT_COLORS = false;
 export function prepareNN(World) {
   var nn = new NeuralNetwork({
     numInputs: 2 * QUADRANTS_DEPTH, // x, y position in quadrant space
-    numHiddenLayers: 1, //1,
-    neuronsPerHiddenLayer: 45, //7,
+    numHiddenLayers: parseInt($("#numHiddenLayers").val()) || 1, //1,
+    neuronsPerHiddenLayer: parseInt($("#neuronsPerHiddenLayer").val()) || 45, //7,
     numOutputs: BIT_COLORS ? 16 * 3 : 3, // r, g, b, each with 16 values 00 - ff
     networkEvaluationSuccessThreshold: 0.1, //0.65, //0.01,
-    learningRateEta: 18, //4, //0.05, //0.4,
+    learningRateEta: (1 * $("#learningRateEta").val()) || 18, //4, //0.05, //0.4,
   });
   /*var trainingData = new TrainingData();
   for(var i=0; i < data.imgs.length; ++i){

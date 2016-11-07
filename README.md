@@ -1,6 +1,8 @@
-# simple nodejs neural network
+# image generating neural network
 
-... with Stochastic Gradient Descent.
+(Try it yourself at http://tablekat.net/fun/nnimage/ !!!)
+
+... with Stochastic Gradient Descent.  
 ... with image related stuff!
 
 Essentially take an encoded x/y coordinate, and train the neural network on an image to learn what the color should be at that point!
@@ -9,14 +11,16 @@ Neural network stuff: `src/nn`
 Using it to draw images: `src/image`  
 Based on https://github.com/tablekat/simple-neural-network
 
-Success threshold and the learning rate (eta) are defined in `src/mnist/index.ts`, play with those if you want.
-
 ![](http://i.imgur.com/IfRNgoH.png)
 
-### Referred to
-[This book thing](http://neuralnetworksanddeeplearning.com/chap1.html) to figure out the SGD related stuff. Converting from gross untyped python code to a language with typing is really annoying.
+## Run with
 
-# Examples
+`npm run build` or `npm run watch` in one tab, and `npm start` in another.
+
+### Referred to
+[This book thing](http://neuralnetworksanddeeplearning.com/chap1.html) to figure out the SGD related stuff.
+
+## Examples
 1 hidden layer, 7 neurons, 4? eta  
 ![](http://i.imgur.com/h1iIuw3.png)
 

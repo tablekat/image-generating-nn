@@ -3,6 +3,9 @@
   <title>...</title>
 
   <style>
+    body{
+      font-family: sans-serif;
+    }
     .main {
       text-align: center;
     }
@@ -10,6 +13,27 @@
       border: 1px solid black;
       padding: 5px;
       margin: 10px;
+    }
+    .controls {
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      border: 1px solid black;
+      box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.4);
+      padding: 10px;
+      background: white;
+      text-align: right;
+    }
+    .info {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      border: 1px solid black;
+      box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.4);
+      padding: 10px;
+      background: white;
+      max-width: 250px;
+      text-align: right;
     }
   </style>
   <script
@@ -20,8 +44,56 @@
 </head>
 <body>
 
+  <div class="info">
+    <p>This is a neural network that learns how to draw an image.</p>
+    <p>It doesn't always work, but it tries its best! Sometimes you may get some unlucky starting weights so you might need to retry a few times.</p>
+    <p>Made by <a href="http://tablekat.net">tablekat</a>!! </p>
+    <p><a href="https://github.com/tablekat/image-generating-nn" target="_blank">View on Github (with examples!)</a></p>
+  </div>
+
   <div class="main">
-    <button onclick="startNN()">Start NN</button><br/>
+    <div class="controls">
+      <label>numHiddenLayers</lable>
+      <input type="number" value="1" id="numHiddenLayers" /><br/>
+      <label>neuronsPerHiddenLayer</lable>
+      <input type="number" value="45" id="neuronsPerHiddenLayer" /><br/>
+      <label>learningRateEta</lable>
+      <input type="number" value="18" id="learningRateEta" /><br/>
+      <label>epochs</lable>
+      <input type="number" value="20" id="epochs" /><br/>
+
+      <label>image</lable>
+      <input type="text" value="static/cb2.jpg" id="image" /><br/>
+      <button onclick="$('#image').val('static/cb2.jpg')">cb2</button>
+      <button onclick="$('#image').val('static/cb.jpg')">cb</button>
+      <button onclick="$('#image').val('static/house.jpg')">house</button>
+      <br/>
+      <i>(Image must have crossorigin sharing header)</i>
+
+      <hr/>
+      <b>Presets</b><br/>
+      <button onclick="
+        $('#numHiddenLayers').val('1');
+        $('#neuronsPerHiddenLayer').val('45');
+        $('#learningRateEta').val('18');
+        $('#image').val('static/cb2.jpg');
+      ">cb2</button>
+      <button onclick="
+        $('#numHiddenLayers').val('1');
+        $('#neuronsPerHiddenLayer').val('45');
+        $('#learningRateEta').val('18');
+        $('#image').val('static/cb.jpg');
+      ">cb</button>
+      <button onclick="
+        $('#numHiddenLayers').val('1');
+        $('#neuronsPerHiddenLayer').val('45');
+        $('#learningRateEta').val('12');
+        $('#image').val('static/house.jpg');
+      ">house</button>
+
+      <hr/>
+      <button onclick="startNN()">Start NN</button><br/>
+    </div>
     <canvas id="outCanvas"></canvas>
     <br/>
     <canvas id="fromCanvas"></canvas>

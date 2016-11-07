@@ -13,10 +13,10 @@ World.inCtx = World.inCanvas.getContext('2d');
 World.outCtx = World.outCanvas.getContext('2d');
 window.World = World;
 
-main();
+$(main);
 function main(){
 
-  loadImage().then(img => {
+  return loadImage().then(img => {
     World.img = img;
     World.imgWidth = img.width;
     World.imgHeight = img.height;
@@ -32,13 +32,18 @@ function main(){
 }
 
 window.startNN = function(){
-  console.log("Preparing neural network...");
-  var { nn, trainingData, testData } = prepareNN(World);
-  console.log("Running neural network...");
+  main().then(() => {
 
-  run(nn, trainingData, testData);
+    $("#epochCanvases").text();
 
-  feedForwardImage(nn);
+    console.log("Preparing neural network...");
+    var { nn, trainingData, testData } = prepareNN(World);
+    console.log("Running neural network...");
+
+    run(nn, trainingData, testData);
+
+    feedForwardImage(nn);
+  });
 
 }
 
@@ -46,7 +51,7 @@ function loadImage(){
   return new Promise((resolve, reject) => {
     var img = new Image();
     //img.src = 'static/house.jpg';
-    img.src = 'static/cb2.jpg';
+    img.src = $("#image").val() || 'static/cb2.jpg';
     img.onload = () => resolve(img);
   });
 }
@@ -56,10 +61,10 @@ function run(nn, trainingData, testData) {
 
   console.log(trainingData, testData);
 
-  var epochs = 40; //30; //10;
+  var epochs = parseInt($("#epochs").val()); //40; //30; //10;
   var miniBatchSize = Math.floor(trainingData.data.length / 10);
   var eta = nn.learningRateEta;
-  var printer = function(){ feedForwardImage(nn) }; // <--- draw between each epoch... doesn't work
+  var printer = function(){ feedForwardImage(nn) }; // <--- draw between each epoch
   //var printer = () => { nn.learningRateEta--; };
   //var printer = () => { };
   nn.stochasticGradientDescent(trainingData, epochs, miniBatchSize, eta, printer, testData);
